@@ -1,0 +1,38 @@
+[
+  {
+    "id": "3663fd0f-9489-44f1-b173-9db9c448f506",
+    "usuario": "admin",
+    "nombre": "Administrador",
+    "rol": "admin",
+    "activo": true,
+    "salt": "2d6fbf254c58978416db068a65726884",
+    "hash": "c1356cc8332771fc8776bc32d5738a88a35f89c78ef37783d1db90742747b627644e623fccdcce586ad11bac7fe9691169f1ce2766a68dec444806c3cf2f5958"
+  },
+  {
+    "id": "981d2b78-f6ec-4edb-825e-91254226e4e3",
+    "usuario": "ana",
+    "nombre": "Ana Reporteadora",
+    "rol": "reporteador",
+    "activo": true,
+    "salt": "7594b1bba16ef907dcb9cf5afc5c2d0e",
+    "hash": "cbac481eb41f0edb9294515b0892ffb22a5004c80584eca7aaa9d0da8ab73ec511c0d53935f15251fd4cab7d8ac392da7ff8a0db002852daaffe4246473352e3"
+  },
+  {
+    "id": "b4e31c7a-b33d-465c-8164-c39594cef2bb",
+    "usuario": "beto",
+    "nombre": "Beto Monitoreo",
+    "rol": "monitoreo",
+    "activo": true,
+    "salt": "4773f59a93d547906fec4e2a1c1ab569",
+    "hash": "971d8ba1846a4427278e0fc3e83fe91f5075ea3e8b1c86d1bcf6169cc39bab96276c36e97f68205166c080bb526921f99da9560f5a7e87375ff0c0303ea28222"
+  },
+  {
+    "id": "153d3127-9435-4e26-839c-771a2562d04f",
+    "usuario": "carla",
+    "nombre": "Carla Reporteadora",
+    "rol": "reporteador",
+    "activo": true,
+    "salt": "3c984b4d73310071c3904e2fda917675",
+    "hash": "7f381388f072aef8dce95822150f9b131c842e4c0fe2977330fcb208838a20fd1600929ad877d183c00ccf21878a2eaaa579bc73fed6371104ddfaa872822d2e"
+  }
+]

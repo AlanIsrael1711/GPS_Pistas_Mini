@@ -1,0 +1,20 @@
+{
+  "name": "gps-pistas-mini",
+  "version": "1.0.0",
+  "description": "Versión mínima de GPS Pistas para probar usuarios conectados en Render (sin base de datos)",
+  "private": true,
+  "license": "ISC",
+  "main": "server.js",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "crear-usuario": "node scripts/crearUsuario.js",
+    "test": "node test/usuarios.test.js && node test/presencia.test.js && node test/cliente.test.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "socket.io": "^4.8.3"
+  }
+}

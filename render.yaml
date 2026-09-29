@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: gps-pistas-mini
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SESSION_SECRET
+        generateValue: true
+      # Contraseña del usuario "admin" (sustituye a admin123). Render te la pide al crear el servicio.
+      - key: ADMIN_PASSWORD
+        sync: false
