@@ -1,0 +1,120 @@
+/* GPS Pistas - versión mínima de prueba */
+html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; color: #0f172a; }
+#map { position: absolute; inset: 0; z-index: 0; }
+
+/* ---------- Barra de sesión ---------- */
+#barraSesion {
+    position: absolute; z-index: 1000; top: 10px; left: 50%; transform: translateX(-50%);
+    display: flex; align-items: center; gap: 10px; padding: 6px 8px 6px 14px;
+    background: rgba(255,255,255,.96); border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,.25);
+    font-size: 14px; max-width: calc(100vw - 20px);
+}
+#barraSesion[hidden], #panelPrueba[hidden], #modalLogin[hidden] { display: none; }
+#barraSesion .rol { font-size: 11px; font-weight: 700; text-transform: uppercase; color: #fff;
+    background: #64748b; border-radius: 999px; padding: 2px 8px; }
+#barraSesion[data-rol="admin"] .rol { background: #dc2626; }
+#barraSesion[data-rol="reporteador"] .rol { background: #16a34a; }
+#barraSesion[data-rol="monitoreo"] .rol { background: #7c3aed; }
+#barraSesion button, #formLogin button {
+    border: 0; border-radius: 999px; padding: 6px 14px; font-weight: 600; cursor: pointer;
+    background: #0f172a; color: #fff;
+}
+
+/* ---------- Panel de prueba (interruptores) ---------- */
+#panelPrueba {
+    position: absolute; z-index: 1000; left: 10px; bottom: 24px; width: min(300px, calc(100vw - 20px));
+    background: rgba(255,255,255,.96); border-radius: 14px; box-shadow: 0 2px 10px rgba(0,0,0,.25);
+    padding: 10px 12px; display: flex; flex-direction: column; gap: 8px; font-size: 14px;
+}
+#panelPrueba label { display: flex; gap: 8px; align-items: flex-start; cursor: pointer; }
+#panelPrueba input { margin-top: 3px; width: 18px; height: 18px; flex: 0 0 auto; }
+#panelPrueba small { display: block; color: #64748b; }
+#filtroUsuariosConectados { padding-top: 8px; border-top: 1px solid #e2e8f0; }
+
+/* ---------- Login ---------- */
+#modalLogin {
+    position: absolute; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center;
+    background: rgba(15,23,42,.6); padding: 16px;
+}
+#formLogin {
+    background: #fff; border-radius: 16px; padding: 22px; width: min(340px, 100%);
+    display: flex; flex-direction: column; gap: 10px; box-shadow: 0 10px 40px rgba(0,0,0,.4);
+}
+#formLogin h1 { margin: 0 0 4px; font-size: 20px; }
+#formLogin p { margin: 0 0 6px; color: #64748b; font-size: 13px; }
+#formLogin label { font-size: 13px; font-weight: 600; display: flex; flex-direction: column; gap: 4px; }
+#formLogin input { padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 16px; }
+#formLogin button { padding: 11px; font-size: 15px; }
+#errorLogin { color: #b91c1c; font-size: 13px; min-height: 18px; }
+
+/* ==========================================================================
+   USUARIOS CONECTADOS (solo los ve el administrador)
+   ========================================================================== */
+/* El interruptor existe en el HTML para todos, pero solo el admin lo ve. */
+body:not([data-rol="admin"]) #filtroUsuariosConectados {
+    display: none;
+}
+
+.icono-usuario-conectado {
+    background: none;
+    border: 0;
+    overflow: visible;
+}
+
+.usuario-conectado {
+    --color-rol: #64748b;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: max-content;
+    transform: translate(-7px, -7px);
+    pointer-events: auto;
+}
+
+.usuario-conectado--admin { --color-rol: #dc2626; }
+.usuario-conectado--reporteador { --color-rol: #16a34a; }
+.usuario-conectado--monitoreo { --color-rol: #7c3aed; }
+
+.usuario-conectado__punto {
+    flex: 0 0 auto;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--color-rol);
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px var(--color-rol), 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+.usuario-conectado__etiqueta {
+    display: flex;
+    flex-direction: column;
+    padding: 2px 8px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.95);
+    border-left: 3px solid var(--color-rol);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1.15;
+    font-size: 12px;
+    color: #0f172a;
+    white-space: nowrap;
+}
+
+.usuario-conectado__etiqueta small {
+    color: var(--color-rol);
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+/* Sin actualización reciente: se atenúa para no confundirlo con una posición vigente. */
+.usuario-conectado--sin-senal {
+    opacity: 0.5;
+}
+
+.usuario-conectado-popup {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}

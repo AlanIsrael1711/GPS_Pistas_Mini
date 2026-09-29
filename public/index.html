@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>GPS Pistas · Prueba de usuarios conectados</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+    <div id="map"></div>
+
+    <header id="barraSesion" hidden>
+        <span id="sesionNombre"></span>
+        <span id="sesionRol" class="rol"></span>
+        <button id="btnSalir" type="button">Salir</button>
+    </header>
+
+    <section id="panelPrueba" hidden>
+        <label>
+            <input type="checkbox" id="chkSimular">
+            <span>Simular mi posición
+                <small>Toca el mapa para colocarte ahí (útil para probar sin moverte).</small>
+            </span>
+        </label>
+        <!-- Solo lo ve el administrador (regla CSS por data-rol) -->
+        <label id="filtroUsuariosConectados">
+            <input type="checkbox" id="chkUsuariosConectados" checked>
+            <span>Ver Usuarios Conectados
+                <small id="usuariosConectadosResumen">Nadie más conectado</small>
+            </span>
+        </label>
+    </section>
+
+    <div id="modalLogin">
+        <form id="formLogin" autocomplete="on">
+            <h1>GPS Pistas</h1>
+            <p>Versión mínima de prueba</p>
+            <label>Usuario <input id="loginUsuario" name="usuario" autocomplete="username" autocapitalize="none" required></label>
+            <label>Contraseña <input id="loginPassword" name="password" type="password" autocomplete="current-password" required></label>
+            <div id="errorLogin" role="alert"></div>
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/mapa.js"></script>
+    <script src="/js/mapUsuarios.js"></script>
+    <script src="/js/auth.js"></script>
+</body>
+</html>
